@@ -1,0 +1,51 @@
+@startuml parking-app
+  entity User {
+    *id: number
+    --
+    *name: text
+    *email: text
+    email_verified_at: date
+    *password: text
+    remember_token: text
+    created_at: date
+    updated_at: date
+  }
+
+  entity Vehicle {
+    *id: number
+    --
+    *user_id: number <<FK>>
+    *plate_number: text
+    created_at: date
+    updated_at: date
+  }
+
+  entity Zone {
+    *id: number
+    --
+    *name: text
+    *price_per_hour: number
+    created_at: date
+    updated_at: date
+  }
+
+  entity Parking {
+    *id: number
+    --
+    *user_id: number <<FK>>
+    *vehicle_id: number <<FK>>
+    *zone_id: number <<FK>>
+    *start_time: date
+    stop_time: date
+    total_price: number
+    created_at: date
+    updated_at: date
+  }
+
+  Vehicle }|..o| User
+  Parking ||..o{ User 
+  Parking ||..o{ Vehicle
+  Parking ||..o{ Zone
+  
+
+@enduml
