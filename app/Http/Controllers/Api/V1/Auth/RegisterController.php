@@ -14,7 +14,6 @@ class RegisterController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return substr($request->userAgent() ?? '', 0, 255);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
