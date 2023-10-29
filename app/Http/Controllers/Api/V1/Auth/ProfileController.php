@@ -23,6 +23,6 @@ class ProfileController extends Controller
 
         auth()->user()->update($validatedData);
 
-        return response()->json([$validatedData, Response::HTTP_ACCEPTED]);
+        return response()->json($validatedData, Response::HTTP_ACCEPTED);
     }
 }
