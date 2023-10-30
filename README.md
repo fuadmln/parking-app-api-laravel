@@ -5,6 +5,13 @@
 -   PHP Laravel
 -   MySQL
 
+## Docs
+
+-   [User Requirements](_docs/user-requirements.md)
+-   [Database ERD Design](_docs/database-erd.puml)
+-   [Requests Sample](_docs/client-req.http)
+-   [Test Cases](_docs/test-case.md)
+
 ## Features
 
 -   User regisration
