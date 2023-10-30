@@ -12,10 +12,10 @@ class ParkingPriceService{
         $stop = (!is_null($stopTime)) ? new Carbon($stopTime) : now();
 
         $totalTimeByMinutes = $stop->diffInMinutes($start);
+        $totalCeiledTimeByHours = ceil($totalTimeByMinutes / 60);
 
-        $priceByMinutes = Zone::find($zone_id)->price_per_hour / 60;
-
-        return ceil($totalTimeByMinutes * $priceByMinutes);
+        $priceByHours = Zone::find($zone_id)->price_per_hour;
+        return ceil($totalCeiledTimeByHours * $priceByHours);
     }
 }
 
