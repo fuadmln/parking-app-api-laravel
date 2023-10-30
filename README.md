@@ -14,3 +14,41 @@
 -   Get prices for parking zones/areas
 -   Start/stop parking at a chosen zone
 -   View the current/total price of parking
+
+## How to
+
+**Install Locally**
+
+-   Download or clone repository
+
+    ```sh
+    git clone https://github.com/fuadmln/parking-app-api-laravel
+    ```
+
+-   Open and locate project with terminal
+-   Install package
+    ```sh
+    composer install
+    ```
+-   Setup environment variables<br>
+    Copy `.env.example` to `.env` file and set variables value (databases).
+-   Generate application key
+    ```sh
+    php artisan key:generate
+    ```
+-   Migrate database
+    ```sh
+    php artisan migrate
+    ```
+
+**Starting Local Development Server**
+
+```
+php artisan serve
+```
+
+**Running Test**
+
+```
+php artisan test
+```
