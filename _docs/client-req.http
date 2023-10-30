@@ -1,0 +1,124 @@
+
+@api_url = http://localhost:8000/api/v1
+
+###
+# @name RegisterUser
+POST {{api_url}}/auth/register
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+name=Heisenberg
+&email=user@email.com
+&password=12345678
+&password_confirmation=12345678
+
+###
+# @name tokenrequest
+POST {{api_url}}/auth/login
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+&email=user@email.com
+# &password=12345678
+&password=87654321
+
+###
+@access_token = {{tokenrequest.response.body.access_token}}
+
+###
+# @name ViewProfile
+GET {{api_url}}/profile
+Accept: application/json
+Authorization: Bearer {{access_token}}
+
+###
+# @name UpdateProfile
+PUT {{api_url}}/profile
+Accept: application/json
+Authorization: Bearer {{access_token}}
+Content-Type: application/x-www-form-urlencoded
+
+name=NewName
+&email=user@email.com
+
+###
+# @name UpdatePassword
+PUT {{api_url}}/password
+Accept: application/json
+Authorization: Bearer {{access_token}}
+Content-Type: application/x-www-form-urlencoded
+
+current_password=12345678
+&password=87654321
+&password_confirmation=87654321
+
+###
+# @name LogOut
+POST {{api_url}}/auth/logout
+Accept: application/json
+Authorization: Bearer {{access_token}}
+Content-Type: application/x-www-form-urlencoded
+
+###
+# @name AllVehicles
+GET {{api_url}}/vehicles
+Authorization: Bearer {{access_token}}
+
+###
+# @name SingleVehicle
+GET {{api_url}}/vehicles/1
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+###
+# @name CreateVehicle
+POST {{api_url}}/vehicles
+Authorization: Bearer {{access_token}}
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+plate_number=B999Z
+
+###
+# @name UpdateVehicle
+PUT {{api_url}}/vehicles/1
+Authorization: Bearer {{access_token}}
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+plate_number=B321Z
+
+###
+# @name DeleteVehicle
+DELETE {{api_url}}/vehicles/3
+Authorization: Bearer {{access_token}}
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+###
+# @name AllZones
+GET {{api_url}}/zones
+Accept: application/json
+
+###
+# @name StartParking
+POST {{api_url}}/parkings/start
+Authorization: Bearer {{access_token}}
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+vehicle_id=1
+&zone_id=1
+
+###
+# @name ShowParking
+GET {{api_url}}/parkings/3
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+###
+# @name StopParking
+PUT {{api_url}}/parkings/3
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
