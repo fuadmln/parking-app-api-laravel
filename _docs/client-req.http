@@ -19,8 +19,8 @@ Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 
 &email=user@email.com
-# &password=12345678
-&password=87654321
+&password=12345678
+# &password=87654321
 
 ###
 @access_token = {{tokenrequest.response.body.access_token}}
@@ -77,16 +77,18 @@ Authorization: Bearer {{access_token}}
 Accept: application/json
 Content-Type: application/x-www-form-urlencoded
 
-plate_number=B999Z
+plate_number=B999ZZ
+&description=asdfghjkl
 
 ###
 # @name UpdateVehicle
-PUT {{api_url}}/vehicles/1
+PUT {{api_url}}/vehicles/5
 Authorization: Bearer {{access_token}}
 Accept: application/json
 Content-Type: application/x-www-form-urlencoded
 
 plate_number=B321Z
+&description=updated_description
 
 ###
 # @name DeleteVehicle
