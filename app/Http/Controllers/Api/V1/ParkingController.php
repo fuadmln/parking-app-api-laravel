@@ -11,6 +11,22 @@ use App\Services\ParkingPriceService;
 
 class ParkingController extends Controller
 {
+    public function index()
+    {
+        $activeParkings = Parking::active()->latest('start_time')->get();
+        return ParkingResource::collection($activeParkings);
+    }
+
+    public function history()
+    {
+        $stoppedParkings = Parking::stopped()
+            ->with(['vehicle' => fn ($q) => $q->withTrashed()])
+            ->latest('stop_time')
+            ->get();
+
+        return ParkingResource::collection($stoppedParkings);
+    }
+
     public function start(Request $request)
     {
         $parkingData = $request->validate([
